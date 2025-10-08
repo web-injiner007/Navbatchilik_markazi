@@ -1,0 +1,37 @@
+{% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Навбатчилик маркази</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+  </head>
+  <body>
+    <div class="login-body-box">
+      <div class="login-all-container">
+        <div class="login-img-box">
+          <img src="{% static 'images/login6.png' %}" alt="" />
+        </div>
+        <div class="login-container">
+          <div class="login-main">
+            <h4>Навбатчилик маркази</h4>
+            <h4 class="login-h4">Тизимга кириш</h4>
+            <div class="img-sa">
+                <img src="{% static 'images/login6.png' %}" alt="">
+            </div>
+
+            <form method="post">{% csrf_token %}
+                {{form.as_p}}
+                <div class="d-grid gap-2">
+                  <button class="btn btn-primary btn-lg" type="submit">Тизимга кириш</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

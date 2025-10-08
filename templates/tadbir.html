@@ -1,0 +1,304 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Навбатчилик маркази</title>
+   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="sidebar">
+        <h2 style="text-align: center;">Admin Panel</h2>
+        <img src="{% static 'images/emblema.png' %}" alt="">
+        <div class="sidebar-box">
+          <NavLink class="navbar-link-style" to="/"></NavLink>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+          <a href="{% url 'index' %}">Milliy Gvardiya Bo'linmalaridagi ATSlar</a>
+          <a href="{% url 'tadbir' %}" class="active" >Tadbirlar</a>
+          <a href="{% url 'phone' %}">Telefon Raqamlar</a>
+        </div>
+      </div>
+      <div class="main-content">
+<!--        <div class="navbar">Admin sahifaa</div>-->
+        <div class="create-event-box">
+          <h4>O'tkaziladigan Tadbirlar ro'yxati</h4>
+          <div class="scrol-table-box">
+  <table class="table table-primary">
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>O'zbekiston Eron futbol o'yinini o'tkazish</td>
+      <td class="table-td-btn">
+          <div class="table-btn-box">
+              <button
+                  type="button"
+                  class="btn btn-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal1"
+                  data-bs-whatever="@fat"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+</svg>
+                  Batafsil
+                </button>
+                 <button
+                  type="button"
+                  class="btn btn-info"
+                >
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+</svg>
+                  Yuklab olish
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal2"
+                  data-bs-whatever="@fat"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check-fill" viewBox="0 0 16 16">
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5m9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5m-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+</svg>
+                  Tadbirni Tugatish
+                </button>
+
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>O'zbekiston Eron futbol o'yinini o'tkazish</td>
+      <td class="table-td-btn">
+          <div class="table-btn-box">
+              <button
+                  type="button"
+                  class="btn btn-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal1"
+                  data-bs-whatever="@fat"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+</svg>
+                  Batafsil
+                </button>
+                 <button
+                  type="button"
+                  class="btn btn-info"
+                >
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+</svg>
+                  Yuklab olish
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal2"
+                  data-bs-whatever="@fat"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check-fill" viewBox="0 0 16 16">
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5m9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5m-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+</svg>
+                  Tadbirni Tugatish
+                </button>
+
+          </div>
+      </td>
+    </tr>
+     <tr>
+      <th scope="row">1</th>
+      <td>O'zbekiston Eron futbol o'yinini o'tkazish</td>
+      <td class="table-td-btn">
+          <div class="table-btn-box">
+              <button
+                  type="button"
+                  class="btn btn-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal1"
+                  data-bs-whatever="@fat"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+</svg>
+                  Batafsil
+                </button>
+                 <button
+                  type="button"
+                  class="btn btn-info"
+                >
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+</svg>
+                  Yuklab olish
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal2"
+                  data-bs-whatever="@fat"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check-fill" viewBox="0 0 16 16">
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5m9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5m-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+</svg>
+                  Tadbirni Tugatish
+                </button>
+
+          </div>
+      </td>
+    </tr>
+     <tr>
+      <th scope="row">1</th>
+      <td>O'zbekiston Eron futbol o'yinini o'tkazish</td>
+      <td class="table-td-btn">
+          <div class="table-btn-box">
+              <button
+                  type="button"
+                  class="btn btn-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal1"
+                  data-bs-whatever="@fat"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+</svg>
+                  Batafsil
+                </button>
+                 <button
+                  type="button"
+                  class="btn btn-info"
+                >
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+</svg>
+                  Yuklab olish
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal2"
+                  data-bs-whatever="@fat"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check-fill" viewBox="0 0 16 16">
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5m9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5m-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+</svg>
+                  Tadbirni Tugatish
+                </button>
+
+          </div>
+      </td>
+    </tr>
+  </tbody>
+         </table>
+          </div>
+        
+        </div>
+      </div>
+      <div
+        class="modal fade modal2"
+        id="exampleModal1"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Tadbir haqida
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+                 <h5>O'zbekiston Eron futbol o'yinini o'tkazish tadbiri</h5>
+                 <img src="./tadbir.png" alt="">
+                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero asperiores ipsum impedit sunt ea porro earum, temporibus aliquid voluptatum, quam dolorum velit obcaecati molestias.  Tadbir 2025-yilning 10-oktabrdan boshlab 14-oktabrgacha davom etadi. Ushbu tadbirda kimlar qatnashishi kiritiladi. nima haqidaligi</p>
+                 <div class="event-about event-create-user">
+                     <h5>Tadbir yaratuvchisi : </h5> <p>serjant Sadullayev F.R</p>
+                 </div>
+                 <div class="event-about">
+                     <h5>Tadbir yaratilgan vaqt : </h5> <p>03.10.2025 11:56</p>
+                 </div>
+                 <div class="event-about">
+                     <h5>Tadbirga qoldirilgan izoh </h5> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, cum!</p>
+                 </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Yopish
+              </button>
+              <button type="button" class="btn btn-primary">Saqlash</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="exampleModal2"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Tadbirni o'chirish
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <h5>Rostan ham ushbu tadbirni o'chirishni xohlaysizmi?</h5>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Yopish
+              </button>
+              <button type="button" class="btn btn-primary">O'chirish</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

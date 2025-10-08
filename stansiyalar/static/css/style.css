@@ -1,0 +1,516 @@
+/* Global CSS */
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 280px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar img{
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  margin-bottom: 30px;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 0;
+  border: 1px solid #2c3e50;
+  padding: 8px 12px;
+  border-radius: 7px;
+  transition: all 0.3s ease;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.sidebar-box {
+  border-left: 1px solid white;
+}
+
+.sidebar a:hover {
+  /* background-color: #c9d4df; */
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+}
+
+.sidebar a.active {
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: #ecf0f1;
+  padding: 15px 20px;
+  font-weight: bold;
+}
+
+.page-content {
+  padding: 20px;
+}
+
+/* dumaloq shakl uchun style */
+.text-section {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.tree {
+  display: flex;
+  flex-direction: column; /* ✅ faqat vertikal */
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 50px; /* har bir element orasidagi masofa */
+}
+
+.tree li {
+  position: relative;
+  text-align: center;
+}
+
+/* Sana */
+.tree li .li-date {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Blok */
+.box {
+  border: 2px solid rgb(33, 133, 33);
+  border-radius: 6px;
+  padding: 5px 7px;
+  min-width: 200px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  background-color: #eaffea;
+}
+
+.box:hover {
+  background-color: rgb(33, 133, 33);
+  color: #fff;
+}
+
+.box p {
+  margin: 0;
+}
+
+/* Vertikal chiziq */
+.tree li .box::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 50px;
+  background: black;
+}
+
+/* Strelka */
+.tree li .box::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid black;
+}
+
+/* Birinchi elementda chiziq ko'rinmasin */
+.tree li:first-child .box::before,
+.tree li:first-child .box::after {
+  display: none;
+}
+
+/* Xato (toWork: false) bo'lgan bloklar */
+.box.inactive {
+  background-color: #ff4d4d;
+  border-color: red;
+  color: white;
+}
+
+.all-box {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100%;
+  background-color: #e2e8f0; /* och kul-ko‘k/grey */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 20px 20px; /* grid effekti */
+  background-image: url('./bg.png');
+  background-size: cover;
+}
+
+.all-box .section-style {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.all-box .section-style .itugun-img img {
+  /* border: 1px solid red; */
+  height: 1500px;
+  padding-top: 35px;
+  object-fit: cover;
+}
+
+.grant-text {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 28px;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.tree li .img-box {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0px;
+  left: -40px;
+}
+
+.tree li .img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes blinkBackgroundRead {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: red;
+  }
+}
+
+.tree li .box.inactive {
+  border: 2px solid red;
+  color: #fff;
+  background-color: red;
+  animation: blinkBackgroundRead 1s infinite;
+}
+
+.modal-body img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.create-event-box {
+  /* width: 90%; */
+  padding: 10px;
+  background-color: #e2e8f0; /* och kul-ko‘k/grey */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 20px 20px; /* grid effekti */
+  height: 100%;
+}
+
+.create-event-box ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.create-event-box ul li {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.create-event-box ul li p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.create-event-box ul li .li-btn-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.create-event-box ul li button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* color: #fff; */
+  font-size: 18px;
+}
+
+.create-event-box table td {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* .create-event-box table .table-td-btn{
+  display: flex;
+  align-items: flex-end;
+} */
+
+.create-event-box table {
+  border-radius: 7px;
+}
+
+.markaziy-tugun {
+  /*border: 1px solid black;*/
+  border-radius: 7px;
+  width: 280px;
+  height: 500px;
+  text-align: center;
+}
+
+.markaziy-tugun-4 {
+
+  border-radius: 7px;
+  width: 370px;
+  height: 400px;
+  text-align: center;
+}
+
+.markaziy-tugun-3 {
+
+  border-radius: 7px;
+  width: 370px;
+  height: 400px;
+  text-align: center;
+}
+
+.markaziy-tugun h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.markaziy-tugun img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.visible-box {
+  position: absolute;
+  right: -100%;
+  top: 8%;
+  bottom: 0;
+  height: 1600px;
+  width: 700px;
+  border-radius: 6px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  background-color: #d5eed4; /* och kul-ko‘k/grey */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  justify-content: space-around;
+  box-shadow: -3px 0px 12px 4px rgba(34, 60, 80, 0.2);
+  transform: translate(10%, 0%) translateX(-200px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+}
+
+.visible-box.visible-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0%, 0%) translateX(0); /* markazga qaytadi */
+}
+
+.visible-box-section-4 {
+  transform: translate(10%, 0%) translateX(0px);
+  right: 50%;
+}
+
+.visible-box .tugun-liniya {
+  height: 4px;
+  width: 150px;
+  background-color: black;
+}
+
+.visible-box .visible-center-box img {
+  width: 170px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.visible-box .visible-object-box ul {
+  list-style-type: none;
+  height: 1500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: baseline;
+  padding: 10px 0px;
+  position: relative;
+}
+
+.visible-box .visible-object-box ul .visible-close-btn {
+  position: absolute;
+  left: -250%;
+  top: 0;
+}
+
+.visible-box .visible-object-box ul li {
+  position: relative;
+  cursor: pointer;
+}
+
+.visible-box .visible-object-box ul li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* elementning pastidan boshlanadi */
+  left: 50%; /* o‘rtadan */
+  width: 2px; /* chiziq eni */
+  height: calc(100% + 40px); /* avtomatik balandlik */
+  background: black;
+  transform: translateX(-50%);
+}
+
+.visible-box .visible-object-box ul li .li-object-box {
+  border: 1px solid green;
+  border-radius: 5px;
+  padding: 7px 20px;
+  background-color: green;
+  color: #fff;
+}
+
+.visible-box .visible-center-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.visible-box .visible-object-box ul li p {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+
+.scrol-table-box{
+   height: 90%;
+   overflow-y: auto;
+}
+
+.scrol-table-box .table-btn-box{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+/* login page style  */
+
+.login-body-box{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: #E7E4FF;
+     align-items: center;
+  justify-content: center;
+}
+
+.login-body-box .login-all-container{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.login-img-box img{
+  object-fit: cover;
+  width: 1000px;
+  height: 1000px;
+}
+
+.login-main{
+  margin-top: 100px;
+  width: 600px;
+  height: 700px;
+  background-color: rgba(245, 245, 240, 0.95);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  color: #333; 
+  font-family: Arial, sans-serif;
+}
+
+.login-main h4{
+  text-align: center;
+  color: #454068;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.login-main form input{
+  margin-bottom: 20px;
+}
+
+.login-main .login-h4{
+  padding-bottom: 10px;
+}
+
+.login-main form{
+  font-size: 24px;
+}
+
+.login-main img{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  align-items: center;
+}
+
+.login-main .img-sa{
+  display: flex;
+  justify-content: center;
+}
+
+.phone-section-container{
+  height: 97vh;
+  overflow-y: scroll;
+}

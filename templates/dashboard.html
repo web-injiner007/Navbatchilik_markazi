@@ -1,0 +1,192 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Навбатчилик маркази</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    <script src="{% static 'js/chart.umd.js' %}"></script>
+      <style>
+
+/*  chart uchun style */
+  .chart-box {
+      background: #e2e8f0;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 100%;
+      height: 45vh;
+    }
+
+    .chart-box-2{
+      margin-top: 30px;
+    }
+
+    #pieChart{
+      width: 100%;
+      height: 40vh;
+    }
+
+    .chart-section-style{
+      height: 100%;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      gap: 30px;
+    }
+
+    .chart-left{
+      width: 60%;
+
+    }
+
+    .chart-right{
+      background-color: #1e2532;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      width: 40%;
+      border-radius: 12px;
+    }
+
+      .chat-container {
+      width: 100%;
+      height: 100%;
+      background-color: #2b3243;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background-color: #2f3a52;
+      padding: 15px;
+      text-align: center;
+      font-weight: 600;
+      border-bottom: 1px solid #3a445a;
+      border-radius: 12px;
+    }
+
+    .chat-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      max-width: 75%;
+      padding: 10px 15px;
+      border-radius: 12px;
+      position: relative;
+      line-height: 1.4;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+
+    .message.user {
+      background-color: #5b6ef5;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message.other {
+      background-color: #394258;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .chat-footer {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #3a445a;
+      background-color: #2f3a52;
+    }
+
+    .chat-footer input {
+      flex: 1;
+      border: none;
+      border-radius: 6px;
+      padding: 10px;
+      outline: none;
+    }
+
+    .chat-footer button {
+      margin-left: 10px;
+      border: none;
+      background-color: #5b6ef5;
+      color: white;
+      border-radius: 6px;
+      padding: 10px 15px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .chat-footer button:hover {
+      background-color: #4a5bd4;
+    }
+
+    /* Scrollbar style */
+    .chat-body::-webkit-scrollbar {
+      width: 6px;
+    }
+    .chat-body::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 10px;
+    }
+      </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="sidebar">
+        <h2 style="text-align: center">Dashboard</h2>
+        <img src="{% static 'images/emblema.png' %}" alt="">
+        <div class="sidebar-box">
+          <NavLink class="navbar-link-style" to="/"></NavLink>
+          <a href="{% url 'dashboard' %}"  class="active">Dashboard</a>
+          <a href="{% url 'index' %}">Milliy Gvardiya Bo'linmalaridagi ATSlar</a>
+          <a href="{% url 'tadbir' %}">Tadbirlar</a>
+          <a href="{% url 'phone' %}">Telefon Raqamlar</a>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="navbar">Admin sahifaa</div>
+        <div class="chart-section-style">
+          <div class="chart-left">
+            <div class="chart-box">
+              <canvas id="deviceChart"></canvas>
+            </div>
+            <div class="chart-box chart-box-2">
+              <canvas id="employeeChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-right">
+                <div class="chat-container">
+    <div class="chat-header">💬 Tezkor yozishmalar oynasi</div>
+
+    <div class="chat-body" id="chatBody">
+      <div class="message other">Assalomu alaykum</div>
+      <div class="message user">Va alaykum salom</div>
+      <div class="message other">Bugun soat 18:00 da yig‘ilish bo‘ladi</div>
+    </div>
+
+    <div class="chat-footer">
+      <input type="text" id="messageInput" placeholder="Xabar yozing..." />
+      <button id="sendBtn">✉️ Yuborish</button>
+    </div>
+  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/chart-for.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

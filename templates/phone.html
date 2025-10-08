@@ -1,0 +1,2557 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Навбатчилик маркази</title>
+     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="sidebar">
+        <h2 style="text-align: center">Admin Panel</h2>
+       <img src="{% static 'images/emblema.png' %}" alt="">
+        <div class="sidebar-box">
+          <NavLink class="navbar-link-style" to="/"></NavLink>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+         <a href="{% url 'index' %}">Milliy Gvardiya Bo'linmalaridagi ATSlar</a>
+          <a href="{% url 'tadbir' %}" >Tadbirlar</a>
+          <a href="{% url 'phone' %}" class="active">Telefon Raqamlar</a>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="navbar">Admin sahifaa</div>
+        <div class="phone-section">
+             <div class="phone-section-container">
+                <table class="table table-primary table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Фамилияси, исми ва шарифи</th>
+      <th scope="col">Panasonic АТС</th>
+      <th scope="col">ЗАС</th>
+      <th scope="col">Grandstream ATC</th>
+      <th scope="col">Шаҳар тел. рақамлари</th>
+      <th scope="col">Мобил тел. рақамлари</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ҚЎМОНДОНЛИК</p></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Жўраев Рустам Мирзаевич</td>
+      <td>50-01</td>
+      <td>10-01</td>
+      <td></td>
+      <td>71-236-50-01</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>МАМАЮСУПОВ 
+Сарвар Дехканович
+</td>
+      <td>50-04</td>
+      <td>10-02</td>
+      <td>16-26</td>
+      <td>71-236-50-04</td>
+      <td></td>
+    </tr>
+     <tr>
+      <th scope="row">3</th>
+      <td>СОРМОНКУЛОВ 
+Адхамжон Райимович
+</td>
+      <td>50-02</td>
+      <td>10-03</td>
+      <td>16-26</td>
+      <td>71-236-50-02</td>
+      <td></td>
+    </tr>
+     <tr>
+      <th scope="row">4</th>
+      <td>ГАНИЕВ
+Мамиржон Жомолдинович
+</td>
+      <td>50-03</td>
+      <td>10-37</td>
+      <td></td>
+      <td>71-236-50-03</td>
+      <td>97-737-54-74 <br>
+      93-566-54-74
+</td>
+    </tr>
+    <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ҚЎМОНДОН КОТИБИЯТИ</p></td>
+    </tr>
+       <tr>
+      <th scope="row">5</th>
+      <td>РАХМОНОВ
+Ихтиёр Бахтиёрович
+</td>
+      <td>52-25</td>
+      <td>10-21</td>
+      <td></td>
+      <td>71-236-52-25</td>
+      <td>98-101-18-84
+</td>
+    </tr>
+     <tr>
+      <th scope="row">5</th>
+      <td>МУХАНОВ 
+Фазлиддин Холбекович
+</td>
+      <td>51-45</td>
+      <td></td>
+      <td></td>
+      <td>71-236-51-45</td>
+      <td>97-428-34-33
+</td>
+    </tr>
+     <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ҚЎМОНДОННИНГ БИРИНЧИ ЎРИНБОСАРИ КОТИБИЯТИ</p></td>
+    </tr>
+      <tr>
+      <th scope="row">8</th>
+      <td>РАЖАПОВ
+Шавкат Давлатярович
+</td>
+      <td>50-05</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-05</td>
+      <td>97-428-34-03 
+</td>
+    </tr>
+       <tr>
+      <th scope="row">9</th>
+      <td>ҚАРАЕВ
+Рустам Ражабович
+</td>
+      <td>51-11</td>
+      <td></td>
+      <td></td>
+      <td>71-236-51-11</td>
+      <td>97-428-44-66 
+</td>
+    </tr>
+     <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">РЕЖАЛАШТИРИШ ВА АХБОРОТ-ТАҲЛИЛ ФАОЛИЯТИ БОШ БОШҚАРМАСИ</p></td>
+    </tr>
+    <tr>
+      <th scope="row">10</th>
+      <td>ДАДАБОЕВ
+Хомиджон Восижонович
+</td>
+      <td>50-06</td>
+      <td>10-33</td>
+      <td></td>
+      <td>71-236-50-06</td>
+      <td>97-428-99-33 
+</td>
+    </tr>
+     <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ЖАНГОВОР ҚЎЛЛАШНИ РЕЖАЛАШТИРИШ  БОШҚАРМАСИ</p></td>
+    </tr>
+     <tr>
+      <th scope="row">11</th>
+      <td>ШАРОФИТДИНОВ
+Баходир Бахритдинович
+</td>
+      <td>50-35</td>
+      <td>10-23</td>
+      <td></td>
+      <td>71-236-50-35</td>
+      <td>90-358-55-14
+</td>
+    </tr>
+     <tr>
+      <th scope="row">12</th>
+      <td>КУТУМОВ
+Дониёр Хажибаевич
+</td>
+      <td>52-60</td>
+      <td></td>
+      <td></td>
+      <td>71-236-52-60</td>
+      <td>33-456-02-00
+</td>
+    </tr>
+    <tr>
+      <th scope="row">13</th>
+      <td>ХАСИЛОВ 
+Комил Баходирович
+</td>
+      <td>53-52</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>94-191-84-44
+98-888-08-40
+</td>
+    </tr>
+     <tr>
+      <th scope="row">14</th>
+      <td>АКБАРОВ 
+Хизирали Умаралиевия
+</td>
+      <td>52-13</td>
+      <td></td>
+      <td></td>
+      <td>71-236-52-13</td>
+      <td>97-433-81-86
+</td>
+    </tr>
+    <tr>
+      <th scope="row">15</th>
+      <td>АЛИЕВ
+Азизбек Адхамович
+</td>
+      <td>52-63</td>
+      <td></td>
+      <td></td>
+      <td>71-236-52-63</td>
+      <td>90-893-66-19 <br>
+97-953-52-00
+
+</td>
+    </tr>
+    <tr>
+      <th scope="row">16</th>
+      <td>КАМБАРОВ 
+Юрий Сергеевич
+</td>
+      <td>51-37</td>
+      <td></td>
+      <td></td>
+      <td>71-236-51-37</td>
+      <td>97-715-81-26
+</td>
+    </tr>
+       <tr>
+      <th scope="row">17</th>
+      <td>ҒУЛОМОВ 
+Бахтиёр Юлдашевич
+</td>
+      <td>53-37</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+</td>
+    </tr>
+      <tr>
+      <th scope="row">18</th>
+      <td>ЖУМАНИЯЗОВ
+Бобур Баходирович
+</td>
+      <td>51-69</td>
+      <td></td>
+      <td></td>
+      <td>71-236-51-69</td>
+      <td>97-722-72-42 <br>
+33-679-72-42
+
+</td>
+    </tr>
+     <tr>
+      <th scope="row">19</th>
+      <td>АМАНОВ
+Азиз Анарбоевич
+</td>
+      <td>52-54</td>
+      <td></td>
+      <td></td>
+      <td>71-236-52-54</td>
+      <td>99-850-13-70
+</td>
+    </tr>
+      <tr>
+      <th scope="row">20</th>
+      <td>ИКРАМОВ
+Улуғбек Абдукаюм ўғли
+</td>
+      <td>52-61</td>
+      <td></td>
+      <td></td>
+      <td>71-236-52-61</td>
+      <td>94-307-33-33 <br>
+99-429-91-50
+
+</td>
+    </tr>
+       <tr>
+      <th scope="row">21</th>
+      <td>ПРИМОВ 
+Жонибек Бахтиёрович
+</td>
+      <td>51-87</td>
+      <td></td>
+      <td></td>
+      <td>71-236-51-87</td>
+      <td>90-631-73-72
+</td>
+    </tr>
+      <tr>
+      <th scope="row">22</th>
+      <td>ХОЖИХОНОВ
+Ғуломхон Жамолхон ўғли
+</td>
+      <td>52-56</td>
+      <td></td>
+      <td></td>
+      <td>71-236-52-56</td>
+      <td>98-210-81-88
+</td>
+    </tr>
+    <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ТЕЗКОР РАЗВЕДКА БОШҚАРМАСИ</p></td>
+    </tr>
+     <tr>
+      <th scope="row">23</th>
+      <td>АХМЕДОВ
+Баходур Абдурахимович
+</td>
+      <td>51-26</td>
+      <td>10-24</td>
+      <td></td>
+      <td>71-236-51-26</td>
+      <td>97-187-61-00 <br>
+97-772-29-05
+
+</td>
+    </tr>
+      <tr>
+      <th scope="row">24</th>
+      <td>ШОНИЯТОВ
+Шахобиддин Шоюсупович
+</td>
+      <td>50-37</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-37</td>
+      <td>97-720-64-34 <br>
+97-187-65-00
+</td>
+    </tr>
+       <tr>
+      <th scope="row">25</th>
+      <td>ХАЙИТБОЕВ ХАЙИТБОЕВ
+Бобурмирзо Ахмадали ўғли
+
+</td>
+      <td>50-37</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-37</td>
+      <td>93-781-65-77
+</td>
+    </tr>
+      <tr>
+      <th scope="row">26</th>
+      <td>вакант
+
+</td>
+      <td>50-18</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-18</td>
+      <td>97-187-68-00
+</td>
+    </tr>
+    <tr>
+      <th scope="row">27</th>
+      <td>КОРОЛЕВ 
+Дмитрий Вадимович
+</td>
+      <td>53-13</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>97-187-62-00
+</td>
+    </tr>
+      <tr>
+      <th scope="row">28</th>
+      <td>ЭШОНКУЛОВ
+Азиз Азаматович
+</td>
+      <td>51-53</td>
+      <td></td>
+      <td></td>
+      <td>71-236-51-53</td>
+      <td>90-025-51-11 <br>
+97-187-67-00
+ 
+</td>
+    </tr>
+      <tr>
+      <th scope="row">29</th>
+      <td>ЮЛДАШЕВ
+Баходир Тиркашивич
+</td>
+      <td>52-43</td>
+      <td></td>
+      <td></td>
+      <td>71-236-52-43</td>
+      <td>93-000-06-11
+</td>
+    </tr>
+     <tr>
+      <th scope="row">30</th>
+      <td>БАРАТОВ
+Хусниддин Зиёдулла ўғли
+</td>
+      <td>50-45</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-45</td>
+      <td>88-100-63-25
+</td>
+    </tr>
+       <tr>
+      <th scope="row">31</th>
+      <td>МАХАМАДЖАНОВА 
+Саида Махмудовна
+</td>
+      <td>50-37</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-37</td>
+      <td>97-187-63-00
+</td>
+    </tr>
+     <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">АХБОРОТ-ТАҲЛИЛ ФАОЛИЯТИ ВА ҲАМКОРЛИК БОШҚАРМАСИ</p></td>
+    </tr>
+     <tr>
+      <th scope="row">32</th>
+      <td>РАШИДОВ 
+Шараф Вахобович
+</td>
+      <td>50-09 <br>
+52-35
+</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-09</td>
+      <td>97-428-18-18
+</td>
+    </tr>
+      <tr>
+      <th scope="row">33</th>
+      <td>АТАБАЕВ 
+Хамидулла Убайдуллаевич
+</td>
+      <td>50-28<br>
+52-35
+</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-28</td>
+      <td>99-800-71-91
+</td>
+    </tr>
+     <tr>
+      <th scope="row">34</th>
+      <td>ГАРИПОВ
+Равшан Гилмуддинович
+</td>
+      <td>50-63<br>
+52-35
+</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-63</td>
+      <td>93-185-47-52
+</td>
+    </tr>
+       <tr>
+      <th scope="row">35</th>
+      <td>ОЧИЛОВ 
+Фарход Акобирович
+</td>
+      <td>50-63
+</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-63</td>
+      <td>88-177-22-20
+</td>
+    </tr>
+    <tr>
+      <th scope="row">36</th>
+      <td>ХОЛМУРАТОВ
+Темур Абдуллаевич
+
+</td>
+      <td>50-63
+</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-63</td>
+      <td>88-177-22-20
+</td>
+    </tr>
+      <tr>
+      <th scope="row">37</th>
+      <td>МУСАЕВ
+Аббос Бобоназарович
+</td>
+      <td>50-60
+</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-60</td>
+      <td>97-293-35-30
+</td>
+    </tr>
+     <tr>
+      <th scope="row">38</th>
+      <td>ЗАФАРОВА 
+Нафосат Зафаржоновна
+</td>
+      <td>52-53
+</td>
+      <td></td>
+      <td></td>
+      <td>71-236-52-53</td>
+      <td>99-893-08-19
+</td>
+    </tr>
+      <tr>
+      <th scope="row">39</th>
+      <td>ЖУМАНОВА
+Мухайё Алматовна
+</td>
+      <td>52-53
+</td>
+      <td></td>
+      <td></td>
+      <td>71-236-52-53</td>
+      <td>97-747-49-17
+</td>
+    </tr>
+     <tr>
+      <th scope="row">40</th>
+      <td>НУРИДДИНОВ 
+Ёрқинбек Рахматуллаевич
+</td>
+      <td>50-55
+</td>
+      <td></td>
+      <td></td>
+      <td>71-236-50-55</td>
+      <td>97-743-27-78
+</td>
+    </tr>
+     <tr>
+      <th scope="row">41</th>
+      <td>Навбатчи
+</td>
+      <td>50-96
+</td>
+      <td>10-34</td>
+      <td></td>
+      <td>71-236-50-96</td>
+      <td>
+</td>
+    </tr>
+      <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ИЖРОЧИЛИК ИНТИЗОМИ НАЗОРАТИ БЎЛИМИ</p></td>
+    </tr>
+     <tr>
+           <th scope="row">42</th>
+            <td>
+                <strong><span>САЙДАЛИХОНИЙ</span></strong>
+                <span>Ахрорхон Олимхон угли</span>
+            </td>
+            <td>
+                <span>51-27</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-27</span>
+            </td>
+            <td>
+                <span>97-775-91-31</span>
+            </td>
+        </tr>
+        <tr>
+           <th scope="row">43</th>
+            <td>
+                <strong><span>АДИЛОВ</span></strong>
+                <span>Амир Хасанович</span>
+            </td>
+            <td>
+                <span>51-67</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-67</span>
+            </td>
+            <td>
+                <span>90-190-89-90</span>
+                <span>98-277-01-20</span>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">44</th>
+            <td>
+                <strong><span>ЯКУБОВ&nbsp;</span></strong>
+                <span>Заурбек Вохобжонович</span>
+            </td>
+            <td>
+                <span>50-97</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                 <td>
+                <span>&nbsp;</span>
+            </td>
+                <span>71-236-50-97</span>
+            </td>
+            <td>
+                <span>90-438-40-40</span>
+            </td>
+        </tr>
+        <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ЖАМОАТ ТАРТИБИНИ САҚЛАШНИ ТАШКИЛЛАШТИРИШ БОШҚАРМАСИ</p></td>
+    </tr>
+      <tr>
+            <th scope="row">45</th>
+            <td>
+                <strong><span>ЧИНАЛИЕВ</span></strong>
+                <span>Закирали Ниёзкулович</span>
+            </td>
+            <td>
+                <span>50-58</span>
+            </td>
+            <td>
+                <span>10-26</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-58</span>
+            </td>
+            <td>
+                <span>97-428-19-19</span>
+            </td>
+        </tr>
+        <tr>
+         <th scope="row">46</th>
+            <td>
+                <strong><span>ҚУРБОНБОЕВ</span></strong>
+                <span>Тохиржон Сорибоевич</span>
+            </td>
+            <td>
+                <span>51-81</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-81</span>
+            </td>
+            <td>
+                <span>95-920-00-28</span>
+            </td>
+        </tr>
+        <tr>
+           <th scope="row">47</th>
+            <td>
+                <strong><span>ХОМИДОВ</span></strong>
+                <span>Бўрибек</span>
+            </td>
+            <td>
+                <span>50-79</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-79</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+          <th scope="row">48</th>
+            <td>
+                <strong><span>СОЛИХОВ</span></strong>
+                <span>Абдумалик Исмоилович</span>
+            </td>
+            <td>
+                <span>51-39</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-39</span>
+            </td>
+            <td>
+                <span>99-870-51-39</span>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">49</th>
+            <td>
+                <strong><span>МАМАТХОНОВ</span></strong>
+                <span>Нодир Садриддин&nbsp;</span><span>&nbsp;</span><span>ўғли</span>
+            </td>
+            <td>
+                <span>51-39</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-39</span>
+            </td>
+            <td>
+                <span>98-555-90-91</span>
+            </td>
+        </tr>
+        <tr>
+           <th scope="row">50</th>
+            <td>
+                <strong><span>ПАРДАБОЕВ</span></strong>
+                <span>Анвар Абдумаликович</span>
+            </td>
+            <td>
+                <span>51-39</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-39</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+         <th scope="row">51</th>
+            <td>
+                <strong><span>ТУРСУНОВ</span></strong>
+                <span>Темур Элмуродович</span>
+            </td>
+            <td>
+                <span>52-30</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-30</span>
+            </td>
+            <td>
+                <span>97-441-59-50</span>
+            </td>
+        </tr>
+          <tr>
+           <th scope="row">52</th>
+            <td>
+                <strong><span>БЕКНАЗАРОВ</span></strong>
+                <span>Эркин Холмуратович</span>
+            </td>
+            <td>
+                <span>52-30</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-30</span>
+            </td>
+            <td>
+                <span>91-585-37-89</span>
+            </td>
+        </tr>
+         <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">Оммавий тадбирлар даврида жамоат тартибини сақлашни ташкиллаштириш бўлими бошлиғи</p></td>
+    </tr>
+     <tr>
+            <th scope="row">53</th>
+            <td>
+                <strong><span>ҚОСИМОВ</span></strong><span>&nbsp;</span>
+                <span>Илхомжон Рустамович</span>
+            </td>
+            <td>
+                <span>50-08</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-08</span>
+            </td>
+            <td>
+                <span>98-305-60-92</span>
+            </td>
+        </tr>
+        <tr>
+           <th scope="row">54</th>
+            <td>
+                <strong><span>НАБИРАЕВ&nbsp;</span></strong>
+                <span>Азмат Фаридинович</span>
+            </td>
+            <td>
+                <span>53-05</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>90-918-50-55</span>
+            </td>
+        </tr>
+        <tr>
+           <th scope="row">55</th>
+            <td>
+                <strong><span>ТУРЕЖАНОВ</span></strong><span>&nbsp;</span>
+                <span>Гайратдин Мухатдин ули</span>
+            </td>
+            <td>
+                <span>53-22</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>99-068-11-47</span>
+            </td>
+        </tr>
+        <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">Қўриқлов тадбирларига кўмаклашиш бўлими </p></td>
+    </tr>
+    <tr>
+           <th scope="row">56</th>
+            <td>
+                <strong><span>ХАИТОВ&nbsp;</span></strong>
+                <span>Рустам Кадирович</span>
+            </td>
+            <td>
+                <span>50-85</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-85</span>
+            </td>
+            <td>
+                <span>98-123-00-71</span>
+            </td>
+        </tr>
+        <tr>
+          <th scope="row">57</th>
+            <td>
+                <strong><span>ГАНИЕВ</span></strong>
+                <span>Хуршид Рахимджанович</span>
+            </td>
+            <td>
+                <span>51-50</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-50</span>
+            </td>
+            <td>
+                <span>90-812-60-01</span>
+            </td>
+        </tr>
+        <tr>
+             <th scope="row">59</th>
+            <td>
+                <strong><span>ШУКУРОВ</span></strong>
+                <span>Рустамжон Султанович</span>
+            </td>
+            <td>
+                <span>50-83</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-83</span>
+            </td>
+            <td>
+                <span>94-644-68-61</span>
+            </td>
+        </tr>
+         <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">Қўшинлар хизмати хавфсизлигини таъминлаш бўлими</p></td>
+    </tr>
+     <tr>
+          <th scope="row">59</th>
+            <td>
+                <strong><span>ИБРАГИМОВ&nbsp;</span></strong>
+                <span>Бахромжон Бахтиёрович</span>
+            </td>
+            <td>
+                <span>50-61</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-61</span>
+            </td>
+            <td>
+                <span>97-428-41-41</span>
+                <span>90-000-90-35</span>
+            </td>
+        </tr>
+        <tr>
+          <th scope="row">60</th>
+            <td>
+                <strong><span>ҚЎЛДАШЕВ</span></strong>
+                <span>Фазлиддин Асатуллаевич</span>
+            </td>
+            <td>
+                <span>51-16</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-16</span>
+            </td>
+            <td>
+                <span>77-371-38-24</span>
+            </td>
+        </tr>
+        <tr>
+          <th scope="row">61</th>
+            <td>
+                <strong><span>ДАДАБОЕВ&nbsp;</span></strong>
+                <span>Сарвар Абдурашидович</span>
+            </td>
+            <td>
+                <span>51-66</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-66</span>
+            </td>
+            <td>
+                <span>90-984-24-68</span>
+            </td>
+        </tr>
+         <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">СУРИШТИРУВНИ МУВОФИҚЛАШТИРИШ БОШҚАРМАСИ</p></td>
+    </tr>
+     <tr>
+           <th scope="row">62</th>
+            <td>
+                <strong><span>ЗАИТОВ&nbsp;</span></strong>
+                <span>Улуғбек Абдурахманович</span>
+            </td>
+            <td>
+                <span>50-22</span>
+            </td>
+            <td>
+                <span>10-39</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-22</span>
+            </td>
+            <td>
+                <span>97-428-25-52</span>
+                <span>98-125-19-77</span>
+            </td>
+        </tr>
+        <tr>
+          <th scope="row">63</th>
+            <td>
+                <strong><span>УСМАНОВ&nbsp;</span></strong>
+                <span>Алишер Толмасович</span>
+            </td>
+            <td>
+                <span>50-13</span><span>&nbsp;&nbsp;</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-13</span>
+            </td>
+            <td>
+                <span>94-669-11-36</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="64" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ҚОБИЛОВ</span></strong>
+                <span>Ўрол Зокирович</span>
+            </td>
+            <td>
+                <span>51-56</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-56</span>
+            </td>
+            <td>
+                <span>98-812-84-00</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="65" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ХАИТҚУЛОВ&nbsp;</span></strong>
+                <span>Эшмурод Азимович</span>
+            </td>
+            <td>
+                <span>52-04</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-04</span>
+            </td>
+            <td>
+                <span>93-565-51-11</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="66" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ШОХИЗИНДАЕВ&nbsp;</span></strong>
+                <span>Садриддин Пардахонович</span>
+            </td>
+            <td>
+                <span>52-04</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-04</span>
+            </td>
+            <td>
+                <span>93-544-15-18</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="67" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>НОМОЗОВ</span></strong>
+                <span>Ойбек Алимардонович</span>
+            </td>
+            <td>
+                <span>52-05</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-05</span>
+            </td>
+            <td>
+                <span>97-980-19-86</span>
+            </td>
+        </tr>
+        <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ЖАНГОВАР ВА МАХСУС ТАЙЁРГАРЛИК БОШҚАРМАСИ</p></td>
+    </tr>
+     <tr>
+            <td>
+                <ol start="68" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ФАЗИЛОВ</span></strong><br><span>Ботир Наимович</span>
+            </td>
+            <td>
+                <span>51-02</span>
+            </td>
+            <td>
+                <span>10-29</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-02</span>
+            </td>
+            <td>
+                <span>90-355-53-12</span>
+                <span>88-131-73-73</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="69" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>КАРАБАЕВ</span></strong><span>&nbsp;</span>
+                <span>Суннатулла Шукуржанович</span>
+            </td>
+            <td>
+                <span>55-15</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-42</span>
+            </td>
+            <td>
+                <span>99-800-71-74</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="70" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ҚАЛАНДАРОВ</span></strong>
+                <span>Хасан Одилович</span>
+            </td>
+            <td>
+                <span>50-84</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-84</span>
+            </td>
+            <td>
+                <span>91-537-49-00</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="71" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ТУКЛИЕВ</span></strong>
+                <span>Дониёр Абдувохид ўғли</span>
+            </td>
+            <td>
+                <span>50-84</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-84</span>
+            </td>
+            <td>
+                <span>90-036-49-49</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="72" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>УРАИМОВ</span></strong>
+                <span>Музаффар Зухриддинович</span>
+            </td>
+            <td>
+                <span>52-15</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-15</span>
+            </td>
+            <td>
+                <span>94-606-02-22</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="73" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>АМИНОВ&nbsp;</span></strong>
+                <span>Илхом Ихтиярович</span>
+            </td>
+            <td>
+                <span>53-70</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-15</span>
+            </td>
+            <td>
+                <span>91-638-64-72</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="74" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>УРОЛОВ&nbsp;</span></strong>
+                <span>Тошкентбой Абдурашид угли</span>
+            </td>
+            <td>
+                <span>53-70</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-15</span>
+            </td>
+            <td>
+                <span>93-757-03-24</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="75" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>МУМИНОВ&nbsp;</span></strong>
+                <span>Аброржон Машрабович</span>
+            </td>
+            <td>
+                <span>51-62</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-62</span>
+            </td>
+            <td>
+                <span>91-327-75-55</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="76" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>МИРХАМИДОВ</span></strong>
+                <span>Азиз Нуралиевич</span>
+            </td>
+            <td>
+                <span>51-62</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-62</span>
+            </td>
+            <td>
+                <span>88-646-88-66</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="77" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>АХМАТВАЛИЕВ&nbsp;</span></strong>
+                <span>Турсунпулат Абдурахмонович</span>
+            </td>
+            <td>
+                <span>50-86</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-86</span>
+            </td>
+            <td>
+                <span>98-307-70-09</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="78" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ИСОМИДДИНОВ&nbsp;</span></strong>
+                <span>Мирзали Қахромон ўғли&nbsp;</span>
+            </td>
+            <td>
+                <span>52-76</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>93-117-84-04</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="79" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>вакант</span></strong>
+            </td>
+            <td>
+                <span>52-64</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-64</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="80" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>АБДУЛЛАЕВ</span></strong>
+                <span>Анвар Батирович</span>
+            </td>
+            <td>
+                <span>51-38</span>
+                <span>53-88</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-38</span>
+            </td>
+            <td>
+                <span>97-411-15-69</span>
+                <span>93-141-15-69</span>
+            </td>
+        </tr>
+         <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">МАХСУС ОПЕРАЦИЯЛАР БЎЛИМИ</p></td>
+    </tr>
+     <tr>
+            <td>
+                <ol start="81" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ЗАЙНИДДИНОВ&nbsp;</span></strong>
+                <span>Хумоюн Аловиддин ўғли</span>
+            </td>
+            <td>
+                <span>52-11</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-11</span>
+            </td>
+            <td>
+                <span>99-072-12-42</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="82" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>АБДУРАШИТОВ</span></strong>
+                <span>Ринат Маратович</span>
+            </td>
+            <td>
+                <span>52-11</span>
+                <span>52-74</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-11</span>
+            </td>
+            <td>
+                <span>97-343-98-91</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="83" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>МАҚСУДОВ</span></strong>
+                <span>Қуёшбек Акбарали ўғли</span>
+            </td>
+            <td>
+                <span>52-11</span>
+                <span>52-74</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-11</span>
+            </td>
+            <td>
+                <span>93-503-34-95</span>
+            </td>
+        </tr>
+         <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ТЕЗКОР ВАЗИЯТНИ НАЗОРАТ ҚИЛИШ БОШҚАРМАСИ</p></td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="84" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>МИРЗАРАХИМОВ&nbsp;</span></strong><br><span>Яминжон Таирович</span>
+            </td>
+            <td>
+                <span>51-04</span>
+            </td>
+            <td>
+                <span>10-22</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-04</span>
+            </td>
+            <td>
+                <span>97-428-37-37&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="85" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ТОЛИПОВ</span></strong>
+                <span>Ғайниддин Абдужаббарович</span>
+            </td>
+            <td>
+                <span>51-71</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-71</span>
+            </td>
+            <td>
+                <span>97-755-03-10</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="86" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>НЕМАТУЛЛАЕВ</span></strong>
+                <span>Баходир Бахтиёрович</span>
+            </td>
+            <td>
+                <span>51-06</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-06</span>
+            </td>
+            <td>
+                <span>90-324-16-17</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="87" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ТУРАЕВ&nbsp;</span></strong>
+                <span>Дилшод</span>
+            </td>
+            <td>
+                <span>51-06</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-06</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="88" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>Тезкор навбатчи</span></strong>
+            </td>
+            <td>
+                <span>50-11</span>
+            </td>
+            <td>
+                <span>10-07</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-11</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="89" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>Тезкор навбатчи ёрдамчиси</span></strong>
+            </td>
+            <td>
+                <span>50-07</span>
+            </td>
+            <td>
+                <span>10-47</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-07</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="90" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>Бошқарув пункти навбатчилари</span></strong>
+            </td>
+            <td>
+                <span>52-67</span>
+                <span>52-68</span>
+                <span>52-69</span>
+                <span>52-71</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-67</span>
+                <span>71-236-52-68</span>
+                <span>71-236-52-69</span>
+                <span>71-236-52-71</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="91" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>Марказий девон навбатчиси</span></strong>
+            </td>
+            <td>
+                <span>52-40</span>
+                <span>54-40</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-40</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+          <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ЁШЛАР ВА “МЕҲРИБОНЛИК” МУАССАСАЛАРИ БИЛАН ИШЛАШ БОШҚАРМАСИ</p></td>
+        </tr>
+         <tr>
+            <td>
+                <ol start="92" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ХУЖАНАЗАРОВА</span></strong>
+                <span>Махсуда Мухаммадиевна</span>
+            </td>
+            <td>
+                <span>51-90</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-90</span>
+            </td>
+            <td>
+                <span>99-903-40-44</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="93" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ТУРСУНОВ</span></strong>
+                <span>Мадамин</span>
+            </td>
+            <td>
+                <span>52-06</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-06</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="94" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>АБДУЛЛАЕВ&nbsp;</span></strong>
+                <span>Сардор Рахимжон ўғли</span>
+            </td>
+            <td>
+                <span>52-24</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-24</span>
+            </td>
+            <td>
+                <span>94-424-18-95</span>
+                <span>33-755-13-19</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="95" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>МАХМУДЖОНОВ</span></strong>
+                <span>Ўктам&nbsp;</span><span>&nbsp;</span><span>Анварович</span>
+            </td>
+            <td>
+                <span>51-99</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-99</span>
+            </td>
+            <td>
+                <span>97-717-19-80</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="96" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>МЕЛИХЎЖАЕВ</span></strong>
+                <span>Аброр Обидхонович</span>
+            </td>
+            <td>
+                <span>52-24</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-52-24</span>
+            </td>
+            <td>
+                <span>99-841-80-86</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="97" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>МУМИНОВА&nbsp;</span></strong>
+                <span>Мухлиса</span><strong><span> </span></strong><span>Абдуахатовна</span>
+            </td>
+            <td>
+                <span>50-29</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+              <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-29</span>
+            </td>
+            <td>
+                <span>99-487-10-03</span>
+                <span>97-449-10-03</span>
+            </td>
+        </tr>
+        <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">АЛОҚА, АХБОРОТ-КОММУНИКАЦИЯ ТЕХНОЛОГИЯЛАРИ ВА АХБОРОТНИ ҲИМОЯЛАШ БОШҚАРМАСИ</p></td>
+        </tr>
+         <tr>
+            <td>
+                <ol start="98" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>САРДАЛАШВИЛИ&nbsp;</span></strong>
+                <span>Георгий Шотавич</span>
+            </td>
+            <td>
+                <span>50-78</span>
+            </td>
+            <td>
+                <span>10-10</span>
+            </td>
+               <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-78</span>
+            </td>
+            <td>
+                <span>99-848-68-78</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="99" type="1">
+                    <li><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>БЕРДИЕВ</span></strong>
+                <span>Музаффар Искандарович</span>
+            </td>
+            <td>
+                <span>50-10</span>
+            </td>
+            <td>
+                <span>10-44</span>
+            </td>
+               <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-10</span>
+            </td>
+            <td>
+                <span>97-428-29-30</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="100" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>АБДУРАШИТОВ&nbsp;</span></strong>
+                <span>Рустем Бахтиярович</span>
+            </td>
+            <td>
+                <span>51-05</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+               <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-05</span>
+            </td>
+            <td>
+                <span>90-917-49-80</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="101" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ҚОСИМОВ&nbsp;</span></strong>
+                <span>Фахриддин Нуриддинович</span>
+            </td>
+            <td>
+                <span>51-52</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+               <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-52</span>
+            </td>
+            <td>
+                <span>99-371-21-12</span>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <ol start="102" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ЭШОНКУЛОВ</span></strong>
+                <span>Нурбек Эшпўлатович</span>
+            </td>
+            <td>
+                <span>50-26</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-26</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="103" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>БАХРАНОВ</span></strong>
+                <span>Бўстон Ахмедович</span>
+            </td>
+            <td>
+                <span>51-40</span>
+            </td>
+            <td>
+                <span>10-38</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-40</span>
+            </td>
+            <td>
+                <span>93-626-90-75</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="104" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ХАМРАКУЛОВ&nbsp;</span></strong>
+                <span>Темур Тахирович</span>
+            </td>
+            <td>
+                <span>51-33</span>
+            </td>
+            <td>
+                <span>10-40</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-33</span>
+            </td>
+            <td>
+                <span>90-943-39-69</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="105" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>КУПРИЯНОВ</span></strong><span>&nbsp;</span>
+                <span>Ростислав Михайлович</span>
+            </td>
+            <td>
+                <span>54-54</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-30</span>
+            </td>
+            <td>
+                <span>99-777-45-70</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="106" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>УСМОНОВ</span></strong>
+                <span>Сардор Бахтиёрович</span>
+            </td>
+            <td>
+                <span>51-74</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-74</span>
+            </td>
+            <td>
+                <span>99-434-72-74</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="107" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>Махсус алоқа пости навбатчиси</span></strong>
+            </td>
+            <td>
+                <span>51-32</span>
+            </td>
+            <td>
+                <span>10-16</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-32</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+            <tr class="table-success">
+      <td colspan="8" class="fw-bold"><p class="alert alert-success m-0 text-center fw-bold fs-3" role="alert">ТАРБИЯВИЙ ВА МАФКУРАВИЙ ИШЛАР БОШҚАРМАСИ</p></td>
+        </tr>
+         <tr>
+            <td>
+                <ol start="108" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>АЛИМОВ&nbsp;</span></strong>
+                <span>Зафар Кодиржонович</span>
+            </td>
+            <td>
+                <span>51-07</span>
+            </td>
+            <td>
+                <span>10-27</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-07</span>
+            </td>
+            <td>
+                <span>97-428-15-15</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="109" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ЛУТФИДДИНОВ</span></strong>
+                <span>Аваз Хабибуллаевич</span>
+            </td>
+            <td>
+                <span>50-14</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-14</span>
+            </td>
+            <td>
+                <span>94-444-34-10</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="110" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>МИРАХМЕДОВ</span></strong><span>&nbsp;</span><br><span>Музаффар Якубжонович</span>
+            </td>
+            <td>
+                <span>51-47</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-47</span>
+            </td>
+            <td>
+                <span>99-026-17-15</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="111" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>САПАРБАЕВ</span></strong>
+                <span>Нурбек</span><strong><span> </span></strong><span>Махмуджонович</span>
+            </td>
+            <td>
+                <span>51-47</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-47</span>
+            </td>
+            <td>
+                <span>90-282-23-23</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="112" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ТОШПЎЛАТОВ</span></strong>
+                <span>Нодир</span>
+            </td>
+            <td>
+                <span>53-27</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>-</span>
+            </td>
+            <td>
+                <span>99-050-05-59</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="113" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>ИШМОНОВ</span></strong>
+                <span>Гулом Нормуродович</span>
+            </td>
+            <td>
+                <span>51-73</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-73</span>
+            </td>
+            <td>
+                <span>93-660-19-05</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="114" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>МАМУТОВ</span></strong>
+                <span>Жахонгир Равшанбоевич</span>
+            </td>
+            <td>
+                <span>51-73</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-73</span>
+            </td>
+            <td>
+                <span>98-101-47-41</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="115" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>АЛИМБЕКОВ&nbsp;</span></strong>
+                <span>Дилшодбек Юсуббекович</span>
+            </td>
+            <td>
+                <span>50-33</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-33</span>
+            </td>
+            <td>
+                <span>99-087-40-05</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="116" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>УЛУҒБЕРДИЕВ</span></strong>
+                <span>Рашид Бахтиёрович</span>
+            </td>
+            <td>
+                <span>51-92</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-51-92</span>
+            </td>
+            <td>
+                <span>93-839-00-89</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="117" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>АШИРМАТОВА</span></strong><span>&nbsp;</span>
+                <span>Барно Сааталиевна</span>
+            </td>
+            <td>
+                <span>50-46</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-46</span>
+            </td>
+            <td>
+                <span>93-567-21-11</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="118" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <strong><span>МАМУРОВ&nbsp;</span></strong>
+                <span>Мухаммадамин Мавлонхонович</span>
+            </td>
+            <td>
+                <span>50-32</span>
+                <span>53-24</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>71-236-50-32</span>
+            </td>
+            <td>
+                <span>93-424-53-33</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol start="119" type="1">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span></li>
+                </ol>
+            </td>
+            <td>
+                <span>кутубхона</span>
+            </td>
+            <td>
+                <span>53-71</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+             <td>
+                <span>&nbsp;</span>
+            </td>
+            <td>
+                <span>&nbsp;</span>
+            </td>
+        </tr>
+  </tbody>
+</table>
+             </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>
