@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'monitoring',
+        'NAME': 'monitoring_db',
         'USER': 'postgres',
         'PASSWORD': '2002',
         'HOST': '127.0.0.1',

@@ -1,7 +1,6 @@
 import asyncio
 import subprocess
-from .models import Ipmanzil
-from .models import Hudud
+from .models import Ipmanzil,GATS
 
 
 
@@ -33,21 +32,17 @@ def update_ip_statuses():
     for ip, status in results:
         Ipmanzil.objects.filter(ip_manzili=ip).update(is_active=status)
 
-    for hudud in Hudud.objects.all():
-        if Ipmanzil.objects.filter(hudud=hudud, is_active=False).exists():
-            hudud.holat = False
-            hudud.save()
-            break
-        else:
-            hudud.holat = True
-            hudud.save()
-            break
 
+# def update_gats_status1():
+#     ips1 = GATS.objects.all()
+#     ip_list1 = [ip1.ip_manzili for ip1 in ips1]
+#     results1 = asyncio.run(ping_all(ip_list1))
+#     for ip, status in results1:
+#         GATS.objects.filter(ip_manzili=ip).update(is_active=status)
 
-
-        # hudud = Ipmanzil.objects.get(ip_manzili=ip).hudud
-        # hudud.holat = status
-        # hudud.save()
+        # obj = Ipmanzil.objects.get(ip_manzili=ip).hudud
+        # obj.is_active = status
+        # obj.save()
 
 
 

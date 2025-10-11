@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.db.models import TextField
 
 from config import settings
 
@@ -20,9 +21,29 @@ class Profil(models.Model):
 
 
 class Tadbir(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     h_qism = models.CharField(max_length=100)
     aloqa_t = models.CharField(max_length=100)
-    fayl = models.FileField(upload_to='tadbir_hujjatlari', blank=True, null=True)
+    nomi = models.CharField(max_length=500)
+    fayl = models.ImageField(upload_to='tadbir_images/', blank=True, null=True)
     asosiy_q = RichTextField()
+    izoh = TextField(blank=True,null=True)
+    done = models.BooleanField(default=False,blank=True,null=True)
+    vaqt = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.nomi
+
+
+
+class ChatMessage(models.Model):
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    image = models.ImageField(upload_to='chat_images/', blank=True, null=True)
+    video = models.FileField(upload_to='chat_videos/', blank=True, null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.sender.username}: {self.message[:20]}"
+
 

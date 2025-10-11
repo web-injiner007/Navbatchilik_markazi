@@ -7,7 +7,61 @@
    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
   </head>
+      <style>
+    #center-alert {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .alert-message {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      padding: 25px 50px;
+      border-radius: 15px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      animation: scaleUp 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleUp {
+      from { transform: scale(0.8); opacity: 0.5; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+
+  <script>
+    setTimeout(() => {
+      const alertBox = document.getElementById('center-alert');
+      if (alertBox) {
+        alertBox.style.transition = "opacity 0.8s ease";
+        alertBox.style.opacity = "0";
+        setTimeout(() => alertBox.remove(), 800);
+      }
+    }, 3000); // 3 soniyadan keyin yo‘qoladi
+  </script>
   <body>
+  {% if messages %}
+  <div id="center-alert">
+    {% for message in messages %}
+      <div class="alert-message">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+
     <div class="app-container">
       <div class="sidebar">
         <h2 style="text-align: center;">Admin Panel</h2>
@@ -23,21 +77,51 @@
       <div class="main-content">
 <!--        <div class="navbar">Admin sahifaa</div>-->
         <div class="create-event-box">
-          <h4>O'tkaziladigan Tadbirlar ro'yxati</h4>
+            <div class="create-event-box-top" style="display: flex; justify-content: space-between;">
+                  <h4 align="center">O'tkazilayotgan Tadbirlar ro'yxati</h4>
+                    <button
+                  type="button"
+                  class="btn btn-success mr-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#tadbir_yaratish"
+                  data-bs-whatever="@fat"
+                >
+                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+</svg>
+                  Yaratish
+                </button>
+            </div>
+
           <div class="scrol-table-box">
   <table class="table table-primary">
   <tbody>
+  <thead style="background: #0f5132;">
     <tr>
-      <th scope="row">1</th>
-      <td>O'zbekiston Eron futbol o'yinini o'tkazish</td>
+      <th scope="col">#</th>
+      <th scope="col">Tadbir yaratuvchisi</th>
+      <th scope="col">Aloqa tuguni</th>
+      <th scope="col">Harbiy qism</th>
+        <th scope="col">Tadbir mavzusi</th>
+        <th></th>
+    </tr>
+  </thead>
+  {% for tadbir in tadbirlar %}
+    <tr>
+      <th scope="row">{{tadbir.id}}</th>
+        <td>{{tadbir.user.username}}</td>
+        <td>{{tadbir.aloqa_t}}</td>
+        <td>{{tadbir.user.h_qism}}</td>
+      <td>{{tadbir.nomi}}</td>
       <td class="table-td-btn">
           <div class="table-btn-box">
               <button
                   type="button"
                   class="btn btn-warning"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModal1"
+                 data-bs-target="#tadbirModal{{ tadbir.id }}"
                   data-bs-whatever="@fat"
+                  data-id="{{ tadbir.id }}"
                 >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
   <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
@@ -45,22 +129,122 @@
 </svg>
                   Batafsil
                 </button>
+
+
+
+
+               <div class="modal fade" id="tadbirModal{{ tadbir.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5"><h5>{{ tadbir.nomi }}</h5></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="event-about">
+            <h5>tadbir yaratuvchisi:</h5>
+            <p>{{ tadbir.user.username }}</p>
+          </div>
+            <p>{{ tadbir.asosiy_q }}</p>
+          <div class="event-about">
+            <h5>Tadbir yaratilgan vaqt:</h5>
+            <p>{{ tadbir.vaqt }}</p>
+          </div>
+            {% if tadbir.fayl %}
+              <img src="{{ tadbir.fayl.url }}" alt="Tadbir rasmi" width="200">
+            {% else %}
+              <p>📁 Fayl yuklanmagan</p>
+            {% endif %}
+          <div class="event-about">
+            <h5>Izoh:</h5>
+            <p>{{ tadbir.izoh }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+               <button
+    type="button"
+    class="btn btn-info"
+    onclick="DownloadPdf('{{ tadbir.id }}')"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+      fill="currentColor" class="bi bi-file-earmark-arrow-down"
+      viewBox="0 0 16 16">
+      <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+      <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+    </svg>
+    Yuklab olish
+  </button>
+
+  <!-- Har bir tadbir uchun alohida ID -->
+ <div id="content-to-pdf-{{ tadbir.id }}" style="display:none;">
+    <h2 id="report-title-{{ tadbir.id }}">{{ tadbir.nomi }}</h2>
+    <p id="report-text-{{ tadbir.id }}">{{ tadbir.asosiy_q }}</p>
+    <p id="report-date-{{ tadbir.id }}"></p>
+  </div>
+
+
                  <button
                   type="button"
-                  class="btn btn-info"
+                  class="btn btn-secondary"
+
+                    data-bs-toggle="modal"
+    data-bs-target="#tahrirModal{{ tadbir.id }}"
+                  data-bs-whatever="@fat"
                 >
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
-  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
 </svg>
-                  Yuklab olish
+                  Tadbirni tahrirlash
                 </button>
+<div class="modal fade" id="tahrirModal{{ tadbir.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">✏️ Tadbirni Tahrirlash</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+      <form method="POST" enctype="multipart/form-data" style="margin: 20px;">
+  {% csrf_token %}
+  <input type="hidden" name="tadbir_id" value="{{ tadbir.id }}">
+  <input type="hidden" name="edit_tadbir" value="1">
+   <p>tadbir yaratuvchisi : {{tadbir.user.username}}</p>
+    <p>{{ tadbir.h_qism }}</p>
+  <input type="text" name="h_qism" value="{{ tadbir.h_qism }}" class="form-control">
+   <p>{{ tadbir.aloqa_t }}</p>
+  <input type="text" name="aloqa_t" value="{{ tadbir.aloqa_t }}" class="form-control">
+  <p>{{ tadbir.nomi }}</p>
+  <input type="text" name="nomi" value="{{ tadbir.nomi }}" class="form-control">
+  <p>{{ tadbir.asosiy_q }}</p>
+  <input type="text" name="asosiy_q" value="{{ tadbir.asosiy_q }}" class="form-control">
+   <p>{{ tadbir.izoh }}</p>
+  <input type="text" name="izoh" value="{{ tadbir.izoh }}" class="form-control">
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success">Saqlash</button>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
+  </div>
+</form>
+
+      </div>
+    </div>
+  </div>
 
                 <button
                   type="button"
                   class="btn btn-danger"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModal2"
+                data-bs-target="#tugatishModal{{ tadbir.id }}"
                   data-bs-whatever="@fat"
                 >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check-fill" viewBox="0 0 16 16">
@@ -69,153 +253,74 @@
                   Tadbirni Tugatish
                 </button>
 
+ <div class="modal fade" id="tugatishModal{{ tadbir.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title">Tadbirni tugatish</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body text-center">
+          <p class="fs-5 mb-3">
+            <strong>{{ tadbir.nomi }}</strong> tadbirini tugatmoqchimisiz?
+          </p>
+          <p class="text-muted">
+            Bu amalni qaytarib bo‘lmaydi, iltimos, tasdiqlang.
+          </p>
+        </div>
+
+        <div class="modal-footer justify-content-center">
+          <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger px-4">Ha, tugatish</button>
+          </form>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
+        </div>
+      </div>
+    </div>
+  </div>
           </div>
       </td>
     </tr>
     <tr>
-      <th scope="row">1</th>
-      <td>O'zbekiston Eron futbol o'yinini o'tkazish</td>
-      <td class="table-td-btn">
-          <div class="table-btn-box">
-              <button
-                  type="button"
-                  class="btn btn-warning"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal1"
-                  data-bs-whatever="@fat"
-                >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-</svg>
-                  Batafsil
-                </button>
-                 <button
-                  type="button"
-                  class="btn btn-info"
-                >
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
-  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-</svg>
-                  Yuklab olish
-                </button>
+   {% endfor %}
+  </div>
 
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal2"
-                  data-bs-whatever="@fat"
-                >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check-fill" viewBox="0 0 16 16">
-  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5m9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5m-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
-</svg>
-                  Tadbirni Tugatish
-                </button>
 
-          </div>
-      </td>
-    </tr>
-     <tr>
-      <th scope="row">1</th>
-      <td>O'zbekiston Eron futbol o'yinini o'tkazish</td>
-      <td class="table-td-btn">
-          <div class="table-btn-box">
-              <button
-                  type="button"
-                  class="btn btn-warning"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal1"
-                  data-bs-whatever="@fat"
-                >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-</svg>
-                  Batafsil
-                </button>
-                 <button
-                  type="button"
-                  class="btn btn-info"
-                >
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
-  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-</svg>
-                  Yuklab olish
-                </button>
 
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal2"
-                  data-bs-whatever="@fat"
-                >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check-fill" viewBox="0 0 16 16">
-  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5m9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5m-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
-</svg>
-                  Tadbirni Tugatish
-                </button>
 
-          </div>
-      </td>
-    </tr>
-     <tr>
-      <th scope="row">1</th>
-      <td>O'zbekiston Eron futbol o'yinini o'tkazish</td>
-      <td class="table-td-btn">
-          <div class="table-btn-box">
-              <button
-                  type="button"
-                  class="btn btn-warning"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal1"
-                  data-bs-whatever="@fat"
-                >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-</svg>
-                  Batafsil
-                </button>
-                 <button
-                  type="button"
-                  class="btn btn-info"
-                >
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
-  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-</svg>
-                  Yuklab olish
-                </button>
 
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal2"
-                  data-bs-whatever="@fat"
-                >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check-fill" viewBox="0 0 16 16">
-  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5m9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5m-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
-</svg>
-                  Tadbirni Tugatish
-                </button>
 
-          </div>
-      </td>
-    </tr>
+
+
+
+
+
   </tbody>
          </table>
           </div>
         
         </div>
       </div>
-      <div
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+     <div
         class="modal fade modal2"
-        id="exampleModal1"
+        id="tadbir_yaratish"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -223,8 +328,8 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Tadbir haqida
+              <h1 class="modal-title fs-5" id="">
+                Tadbir yaratish
               </h1>
               <button
                 type="button"
@@ -234,71 +339,81 @@
               ></button>
             </div>
             <div class="modal-body">
-                 <h5>O'zbekiston Eron futbol o'yinini o'tkazish tadbiri</h5>
-                 <img src="./tadbir.png" alt="">
-                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero asperiores ipsum impedit sunt ea porro earum, temporibus aliquid voluptatum, quam dolorum velit obcaecati molestias.  Tadbir 2025-yilning 10-oktabrdan boshlab 14-oktabrgacha davom etadi. Ushbu tadbirda kimlar qatnashishi kiritiladi. nima haqidaligi</p>
-                 <div class="event-about event-create-user">
-                     <h5>Tadbir yaratuvchisi : </h5> <p>serjant Sadullayev F.R</p>
-                 </div>
-                 <div class="event-about">
-                     <h5>Tadbir yaratilgan vaqt : </h5> <p>03.10.2025 11:56</p>
-                 </div>
-                 <div class="event-about">
-                     <h5>Tadbirga qoldirilgan izoh </h5> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, cum!</p>
-                 </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Yopish
-              </button>
-              <button type="button" class="btn btn-primary">Saqlash</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="modal fade"
-        id="exampleModal2"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Tadbirni o'chirish
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <h5>Rostan ham ushbu tadbirni o'chirishni xohlaysizmi?</h5>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Yopish
-              </button>
-              <button type="button" class="btn btn-primary">O'chirish</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+               <form method="post" enctype="multipart/form-data">
+                   {% csrf_token %}
+                   {{form.as_p}}
 
+                   <div class="modal-footer"></div>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Yopish
+              </button>
+              <button type="submit" class="btn btn-primary">Saqlash</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    <script>
+// PDF yaratish funksiyasi
+  async function DownloadPdf(tadbirId) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "mm", format: "a4" });
+
+    // Har bir tadbir uchun unikal ID’li elementlarni olish
+    const titleEl = document.getElementById(`report-title-${tadbirId}`);
+    const textEl = document.getElementById(`report-text-${tadbirId}`);
+    const dateEl = document.getElementById(`report-date-${tadbirId}`);
+
+    if (!titleEl || !textEl) {
+      alert("❌ Ma'lumot topilmadi!");
+      return;
+    }
+
+    // Sana yangilanadi
+    if (dateEl) {
+      dateEl.textContent = new Date().toLocaleDateString("uz-UZ");
+    }
+
+    // 1️⃣ Ma’lumotlarni olish
+    const title = titleEl.textContent.trim();
+    const text = textEl.textContent.trim();
+    const sana = dateEl ? dateEl.textContent.trim() : "";
+
+    // 2️⃣ PDF sarlavhasi
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.setTextColor(41, 128, 185);
+    doc.text(title, 20, 30);
+
+    // 3️⃣ Hisobot matni
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+    doc.setTextColor(60, 60, 60);
+    const pageWidth = doc.internal.pageSize.getWidth() - 40;
+    const wrappedText = doc.splitTextToSize(text, pageWidth);
+    doc.text(wrappedText, 20, 45);
+
+    // 4️⃣ Sana
+    doc.setFont("helvetica", "italic");
+    doc.setTextColor(100);
+    doc.text("Sana: " + sana, 20, 120);
+
+    // 5️⃣ Faylni saqlash
+    doc.save(title.replace(/\s+/g, "_") + ".pdf");
+  }
+
+
+    </script>
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/jspdf.umd.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   </body>
 </html>

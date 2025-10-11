@@ -7,23 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
   </head>
-<script>
-        function showTableModal(hudud) {
-            document.getElementById('table-modal-' + hudud).style.display = 'block';
-        }
-        function closeTableModal(hudud) {
-            document.getElementById('table-modal-' + hudud).style.display = 'none';
-        }
-        function showDetailModal(ipId) {
-            document.getElementById('detail-modal-' + ipId).style.display = 'block';
-        }
-        function closeDetailModal(ipId) {
-            document.getElementById('detail-modal-' + ipId).style.display = 'none';
-        }
-          function closeAlert() {
-    document.getElementById("ipAlert").style.display = "none";
-  }
-    </script>
+
 <style>
     /* static/ipapp/style.css */
 body {
@@ -91,9 +75,6 @@ tr:hover {
     cursor: pointer;
 }
 
-
-
-
 @keyframes blinkRed {
 
     0%  { background-color: white; }
@@ -129,6 +110,17 @@ tr:hover {
         </div>
       </div>
       <div class="main-content">
+          <div class="navbar" style="display: flex; justify-content: space-between; padding: 5px 40px;">
+              <h5 style="margin: 0;">Bosh sahifa</h5>
+              <div style="display: flex; gap: 10px; align-items: center;">
+                  {% if profile %}
+                  <img src="{{profile}}" style="width: 40px; height: 40px; object-fit: cover;"/>
+                   {% endif %}
+                  {% if username %}
+                  <p style="padding: 0; margin: 0;">{{username}}</p>
+                  {% endif %}
+              </div>
+          </div>
         <div class="all-box">
           <section class="section-1 section-style">
             <div class="markaziy-tugun"  style="border: none;">
@@ -152,7 +144,6 @@ tr:hover {
                             <img src="{% static 'images/baza.png' %}" alt="baza"/>
                         </div>
                     </li>
-
             <div id="table-modal-{{ hudud }}" class="modal">
                 <div class="modal-content">
                     <span class="close" onclick="closeTableModal('{{ hudud }}')">&times;</span>
@@ -165,8 +156,8 @@ tr:hover {
                             <th bgcolor="#ff7f50;">Faollik</th>
                         </tr>
                         {% for ip in iplar %}
-                            {% if ip.hudud.nomi == hudud %}
-                            <tr style="cursor:pointer;" onclick="showDetailModal({{ip.id}})" class="ip-row {% if not ip.is_active %}ip-danger{% endif %}">
+                            {% if ip.hudud == hudud %}
+                            <tr style="cursor:pointer;" onclick="showDetailModal('{{ ip.id }}')" class="ip-row {% if not ip.is_active %}ip-danger{% endif %}">
                                 <td>{{ ip.nomeri }}</td>
                                 <td>{{ ip.ip_manzili }}</td>
                                 <td>{{ ip.kategoriya }}</td>
@@ -185,7 +176,7 @@ tr:hover {
                             color: #333;
                             line-height: 1.6;
                         ">
-                            <span class="close" onclick="closeDetailModal({{ ip.id }})" style="
+                            <span class="close" onclick="closeDetailModal('{{ ip.id }}')" style="
                                 float: right;
                                 font-size: 28px;
                                 font-weight: bold;
@@ -219,7 +210,6 @@ tr:hover {
                                 <li><strong>Koordinatalar:</strong> {{ ip.koorX }}, {{ ip.koorY }}</li>
                                 <li><strong>Oxirgi tekshiruv:</strong> {{ ip.last_checked }}</li>
                             </ul>
-
                             <h3 style="font-weight: 600; font-size: 18px; margin-top: 20px;">To‘liq Ma’lumot</h3>
                             <div style="background-color: #f9f9f9; padding: 15px; border-radius: 6px;">{{ ip.toliq_mal|safe }}</div>
 
@@ -230,7 +220,6 @@ tr:hover {
                             <div style="background-color: #f9f9f9; padding: 15px; border-radius: 6px;">{{ ip.ichki_nomer|safe }}</div>
                         </div>
                     </div>
-
                             {% endif %}
                         {% endfor %}
                     </table>
@@ -240,8 +229,6 @@ tr:hover {
               </ul>
             </div>
           </section>
-
-
 
 
             <section class="section-2 section-style">
@@ -256,22 +243,21 @@ tr:hover {
             </div>
             <div class="text-section">
               <ul class="tree">
-                    {% for hudud1,holat1 in hududlar1 %}
+                    {% for h,a in hududlar1 %}
                    <li>
-                        <div class="box {% if holat1 %}hudud-danger{% endif %}"
-                           onclick="showTableModal('{{ hudud1 }}')"
+                        <div class="box {% if not a %}hudud-danger{% endif %}"
+                           onclick="showTableModal2('{{ h }}')"
                              style="padding: 8px 0px;">
-                            {{hudud1}}
+                            {{h}}
                         </div>
                         <div class="img-box">
                             <img src="{% static 'images/baza.png' %}" alt="baza"/>
                         </div>
                     </li>
-
-            <div id="table-modal-{{ hudud1 }}" class="modal">
+            <div id="table-modal-two-{{ h }}" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeTableModal('{{ hudud1 }}')">&times;</span>
-                    <h2 style="font-weight: bold">{{ hudud1 }} hududidagi IP manzillar</h2>
+                    <span class="close" onclick="closeTableModal2('{{ h }}')">&times;</span>
+                    <h2 style="font-weight: bold">{{ h }} hududidagi IP manzillar</h2>
                     <table>
                         <tr>
                             <th bgcolor="#ff7f50;">Nomeri</th>
@@ -279,17 +265,16 @@ tr:hover {
                             <th bgcolor="#ff7f50;">Kategoriya</th>
                             <th bgcolor="#ff7f50;">Faollik</th>
                         </tr>
-                        {% for ip1 in iplar1 %}
-                            {% if ip.hudud.nomi == hudud1 %}
-                            <tr style="cursor:pointer;" onclick="showDetailModal({{ip.id}})"
-    class="ip-row {% if not ip1.is_active %}ip-danger{% endif %}">
-                                <td>{{ ip1.nomeri }}</td>
-                                <td>{{ ip1.ip_manzili }}</td>
-                                <td>{{ ip1.kategoriya }}</td>
-                                <td>{{ ip1.is_active|yesno:"Faol,Faol emas" }}</td>
+                        {% for ip in iplar1 %}
+                            {% if ip.hudud == h %}
+                            <tr style="cursor:pointer;" onclick="showDetailModal2('{{ip.id}}')"
+    class="ip-row {% if not ip.is_active %}ip-danger{% endif %}">
+                                <td>{{ ip.nomeri }}</td>
+                                <td>{{ ip.ip_manzili }}</td>
+                                <td>{{ ip.kategoriya }}</td>
+                                <td>{{ ip.is_active|yesno:"Faol,Faol emas" }}</td>
                             </tr>
-                            <!-- IP Detail Modal -->
-                        <div id="detail-modal-{{ ip1.id }}" class="modal">
+                        <div id="detail-modal-two-{{ ip.id }}" class="modal">
                         <div class="modal-content" style="
                             background-color: #ffffff;
                             border-radius: 12px;
@@ -301,7 +286,7 @@ tr:hover {
                             color: #333;
                             line-height: 1.6;
                         ">
-                            <span class="close" onclick="closeDetailModal({{ ip.id }})" style="
+                            <span class="close" onclick="closeDetailModal2('{{ip.id}}')" style="
                                 float: right;
                                 font-size: 28px;
                                 font-weight: bold;
@@ -346,7 +331,6 @@ tr:hover {
                             <div style="background-color: #f9f9f9; padding: 15px; border-radius: 6px;">{{ ip.ichki_nomer|safe }}</div>
                         </div>
                     </div>
-
                             {% endif %}
                         {% endfor %}
                     </table>
@@ -357,22 +341,10 @@ tr:hover {
             </div>
           </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-               <section class="section-3 section-style">
-           <div class="markaziy-tugun markaziy-tugun-3"  style="border: none;width: 430px;">
-              <img src="{% static 'images/panasonic.png' %}" alt="" />
-
+              <section class="section-3 section-style">
+            <div class="markaziy-tugun" style="border: none; width: 520px;scale: inherit;">
+              <img src="{% static 'images/panasonic.png' %}" alt=""/>
+                <br>
               <h4>MG bo'linmalaridagi Panasonic ATS lar</h4>
              <h4>MG DMR Trunk</h4>
             </div>
@@ -381,22 +353,21 @@ tr:hover {
             </div>
             <div class="text-section">
               <ul class="tree">
-                    {% for hudud2,holat2 in hududlar2 %}
+                    {% for h,a in hududlar2 %}
                    <li>
-                        <div class="box {% if holat2 %}hudud-danger{% endif %}"
-                           onclick="showTableModal('{{ hudud2 }}')"
+                        <div class="box {% if not a %}hudud-danger{% endif %}"
+                           onclick="showTableModal3('{{ h }}')"
                              style="padding: 8px 0px;">
-                            {{hudud2}}
+                            {{h}}
                         </div>
                         <div class="img-box">
                             <img src="{% static 'images/baza.png' %}" alt="baza"/>
                         </div>
                     </li>
-
-            <div id="table-modal-{{ hudud2 }}" class="modal">
+            <div id="table-modal-three-{{ h }}" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeTableModal('{{ hudud2 }}')">&times;</span>
-                    <h2 style="font-weight: bold">{{ hudud2 }} hududidagi IP manzillar</h2>
+                    <span class="close" onclick="closeTableModal3('{{ h }}')">&times;</span>
+                    <h2 style="font-weight: bold">{{ h }} hududidagi IP manzillar</h2>
                     <table>
                         <tr>
                             <th bgcolor="#ff7f50;">Nomeri</th>
@@ -404,17 +375,16 @@ tr:hover {
                             <th bgcolor="#ff7f50;">Kategoriya</th>
                             <th bgcolor="#ff7f50;">Faollik</th>
                         </tr>
-                        {% for ip2 in iplar2 %}
-                            {% if ip.hudud.nomi == hudud1 %}
-                            <tr style="cursor:pointer;" onclick="showDetailModal({{ip2.id}})"
-    class="ip-row {% if not ip2.is_active %}ip-danger{% endif %}">
-                                <td>{{ ip2.nomeri }}</td>
-                                <td>{{ ip2.ip_manzili }}</td>
-                                <td>{{ ip2.kategoriya }}</td>
-                                <td>{{ ip2.is_active|yesno:"Faol,Faol emas" }}</td>
+                        {% for ip in iplar2 %}
+                            {% if ip.hudud == h %}
+                            <tr style="cursor:pointer;" onclick="showDetailModal3('{{ip.id}}')"
+    class="ip-row {% if not ip.is_active %}ip-danger{% endif %}">
+                                <td>{{ ip.nomeri }}</td>
+                                <td>{{ ip.ip_manzili }}</td>
+                                <td>{{ ip.kategoriya }}</td>
+                                <td>{{ ip.is_active|yesno:"Faol,Faol emas" }}</td>
                             </tr>
-                            <!-- IP Detail Modal -->
-                        <div id="detail-modal-{{ ip2.id }}" class="modal">
+                        <div id="detail-modal-three-{{ ip.id }}" class="modal">
                         <div class="modal-content" style="
                             background-color: #ffffff;
                             border-radius: 12px;
@@ -426,7 +396,7 @@ tr:hover {
                             color: #333;
                             line-height: 1.6;
                         ">
-                            <span class="close" onclick="closeDetailModal({{ ip.id }})" style="
+                            <span class="close" onclick="closeDetailModal3('{{ip.id}}')" style="
                                 float: right;
                                 font-size: 28px;
                                 font-weight: bold;
@@ -471,7 +441,6 @@ tr:hover {
                             <div style="background-color: #f9f9f9; padding: 15px; border-radius: 6px;">{{ ip.ichki_nomer|safe }}</div>
                         </div>
                     </div>
-
                             {% endif %}
                         {% endfor %}
                     </table>
@@ -482,108 +451,208 @@ tr:hover {
             </div>
           </section>
 
-
-
-
-
-
-
-
-
-
-
-
-          <section class="section-4 section-style">
-            <div class="markaziy-tugun markaziy-tugun-4"  style="border: none;  width: 430px;">
-              <img src="{% static 'images/switch.png' %}" alt="" />
-
-              <h4>MG bo'linmalaridagi VLAN lar</h4>
-
-              <h4>MG DMR Trunk</h4>
-
+              <section class="section-4 section-style">
+            <div class="markaziy-tugun" style="border: none; width: 520px;scale: inherit;">
+              <img src="{% static 'images/switch.png' %}" alt=""/>
+                <br>
+              <h4>MG bo'linmalaridagi Vlanlar</h4>
+             <h4>MG DMR Trunk</h4>
             </div>
             <div class="itugun-img">
-              <img src="{% static 'images/liniya.png' %}" alt="" />
+<!--              <img src="{% static 'images/liniya.png' %}" alt="" />-->
             </div>
             <div class="text-section">
-              <ul class="tree" id="treeList4"></ul>
+              <ul class="tree">
+                    {% for h,a in zonalar %}
+                   <li>
+                        <div class="box {% if a %}hudud-danger{% endif %}"
+                           onclick="showTableModal4('{{ h }}')"
+                             style="padding: 8px 0px;">
+                            {{h}}
+                        </div>
+                        <div class="img-box">
+                            <img src="{% static 'images/baza.png' %}" alt="baza"/>
+                        </div>
+                    </li>
+            <div id="table-modal-four-{{ h }}" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeTableModal4('{{ h }}')">&times;</span>
+                    <h2 style="font-weight: bold">{{ h }} hududidagi IP manzillar</h2>
+                    <table>
+                        <tr>
+                            <th bgcolor="#ff7f50;">Nomeri</th>
+                            <th bgcolor="#ff7f50;">IP Manzili</th>
+                            <th bgcolor="#ff7f50;">Kategoriya</th>
+                            <th bgcolor="#ff7f50;">Faollik</th>
+                        </tr>
+                        {% for ip in manzillar %}
+                            {% if ip.hudud == h %}
+                            <tr style="cursor:pointer;" onclick="showDetailModal4(ip.id)"
+    class="ip-row {% if not ip1.is_active %}ip-danger{% endif %}">
+                                <td>{{ ip.nomeri }}</td>
+                                <td>{{ ip.ip_manzili }}</td>
+                                <td>{{ ip.kategoriya }}</td>
+                                <td>{{ ip.is_active|yesno:"Faol,Faol emas" }}</td>
+                            </tr>
+                        <div id="detail-modal-four-{{ ip1.id }}" class="modal">
+                        <div class="modal-content" style="
+                            background-color: #ffffff;
+                            border-radius: 12px;
+                            padding: 30px;
+                            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+                            max-width: 800px;
+                            margin: 5% auto;
+                            font-family: 'Segoe UI', sans-serif;
+                            color: #333;
+                            line-height: 1.6;
+                        ">
+                            <span class="close" onclick="closeDetailModal4(ip.id)" style="
+                                float: right;
+                                font-size: 28px;
+                                font-weight: bold;
+                                color: #999;
+                                cursor: pointer;
+                            ">&times;</span>
+
+                            <div style="display: flex; justify-content:center; margin-bottom: 20px; width: 100%">
+                                <div class="markaziy-tugun" style="border: none; height: auto;">
+                                    <img src="{% static 'images/baza.png' %}" alt="" style="width: 250px; height: 300px; object-fit: cover; border-radius: 8px;" />
+                                </div>
+                            </div>
+
+                            <h2 style="
+                                font-weight: 600;
+                                background-color: #e0ffe0;
+                                padding: 10px 15px;
+                                border-left: 5px solid #4CAF50;
+                                font-size: 30px;
+                                margin-bottom: 20px;
+                                text-align: center;
+                            ">{{ ip.nomeri }} - IP Ma’lumotlari</h2>
+
+                            <ul style="padding-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; align-items: flex-start; font-size: 18px;">
+                                <li><strong>IP:</strong> {{ ip.ip_manzili }}</li>
+                                <li><strong>Kategoriya:</strong> {{ ip.kategoriya }}</li>
+                                <li><strong>Hudud:</strong> {{ ip.hudud }}</li>
+                                <li><strong>Model:</strong> {{ ip.model }}</li>
+                                <li><strong>Yil:</strong> {{ ip.yil }}</li>
+                                <li><strong>Joylashuvi:</strong> {{ ip.jolashuvi }}</li>
+                                <li><strong>Koordinatalar:</strong> {{ ip.koorX }}, {{ ip.koorY }}</li>
+                                <li><strong>Oxirgi tekshiruv:</strong> {{ ip.last_checked }}</li>
+                            </ul>
+
+                            <h3 style="font-weight: 600; font-size: 18px; margin-top: 20px;">To‘liq Ma’lumot</h3>
+                            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 6px;">{{ ip.toliq_mal|safe }}</div>
+
+                            <h3 style="font-weight: 600; font-size: 18px; margin-top: 20px;">Javobgar Shaxs</h3>
+                            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 6px;">{{ ip.javob_shax|safe }}</div>
+
+                            <h3 style="font-weight: 600; font-size: 18px; margin-top: 20px;">Ichki Nomer</h3>
+                            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 6px;">{{ ip.ichki_nomer|safe }}</div>
+                        </div>
+                    </div>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
             </div>
-            <div class="visible-box visible-box-section-4" id="visible-id4">
-              <div class="visible-center-box">
-                <img src="{% static 'images/liniya.png' %}" alt="" />
-                <h3>Toshkent shahar</h3>
-              </div>
-              <div class="tugun-liniya"></div>
-              <div class="visible-object-box"  style="border: none">
-                <ul>
-                  <div class="visible-close-btn">
-                    <button class="btn btn-danger" onclick="visibleClose4()">
-                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-</svg>
-                    </button>
-                  </div>
-                  <li data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="li-object-box">
-                      <p>1-Baza stansiya</p>
-                    </div>
-                  </li>
-                  <li data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="li-object-box">
-                      <p>2-Baza stansiya</p>
-                    </div>
-                  </li>
-                  <li data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="li-object-box">
-                      <p>3-Baza stansiya</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="li-object-box">
-                      <p>4-Baza stansiya</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="li-object-box">
-                      <p>1-Baza stansiya</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="li-object-box">
-                      <p>1-Baza stansiya</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="li-object-box">
-                      <p>1-Baza stansiya</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="li-object-box">
-                      <p>1-Baza stansiya</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="li-object-box">
-                      <p>1-Baza stansiya</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="li-object-box">
-                      <p>1-Baza stansiya</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+                  {% endfor %}
+              </ul>
             </div>
           </section>
+
         </div>
       </div>
     </div>
 
-     <script src="{% static 'js/script.js' %}"></script>
+<!--     <script src="{% static 'js/script.js' %}"></script>-->
+    <script>
+
+        function showTableModal(hudud) {
+            document.getElementById('table-modal-' + hudud).style.display = 'block';
+        }
+        function closeTableModal(hudud) {
+            document.getElementById('table-modal-' + hudud).style.display = 'none';
+        }
+          function showDetailModal(ipId) {
+            document.getElementById('detail-modal-' + ipId).style.display = 'block';
+        }
+        function closeDetailModal(ipId) {
+            document.getElementById('detail-modal-' + ipId).style.display = 'none';
+        }
+
+
+        function showTableModal2(hudud) {
+            document.getElementById('table-modal-two-' + hudud).style.display = 'block';
+        }
+        function closeTableModal2(hudud) {
+            document.getElementById('table-modal-two-' + hudud).style.display = 'none';
+        }
+
+        function showDetailModal2(ipId) {
+            document.getElementById('detail-modal-two-' + ipId).style.display = 'block';
+        }
+        function closeDetailModal2(ipId) {
+            document.getElementById('detail-modal-two-' + ipId).style.display = 'none';
+        }
+
+
+       function showTableModal3(hudud) {
+            document.getElementById('table-modal-three-' + hudud).style.display = 'block';
+        }
+        function closeTableModal3(hudud) {
+            document.getElementById('table-modal-three-' + hudud).style.display = 'none';
+        }
+        function showDetailModal3(ipId) {
+            document.getElementById('detail-modal-three-' + ipId).style.display = 'block';
+        }
+        function closeDetailModal3(ipId) {
+            document.getElementById('detail-modal-three-' + ipId).style.display = 'none';
+        }
+
+
+        function showTableModal4(hudud) {
+            document.getElementById('table-modal-four-' + hudud).style.display = 'block';
+        }
+        function closeTableModal4(hudud) {
+            document.getElementById('table-modal-four-' + hudud).style.display = 'none';
+        }
+        function showDetailModal4(ipId) {
+            document.getElementById('detail-modal-four-' + ipId).style.display = 'block';
+        }
+        function closeDetailModal4(ipId) {
+            document.getElementById('detail-modal-four-' + ipId).style.display = 'none';
+        }
+
+
+
+
+
+
+
+          function closeAlert() {
+    document.getElementById("ipAlert").style.display = "none";
+  }
+    </script>
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   </body>
 
 {% endblock content %}
+
+<!--{% for i in manzillar %}-->
+<!--<p>{{i.nomeri}}</p>-->
+<!--<p>{{i.turi}}</p>-->
+<!--<p>{{i.ip_manzili}}</p>-->
+<!--<p>{{i.hudud}}</p>-->
+<!--<p>{{i.is_active}}</p>-->
+<!--<br>-->
+<!--{% endfor %}-->
+<!--<br><br>-->
+<!--{% for i in iplar %}-->
+<!--<p>{{i.nomeri}}</p>-->
+<!--<p>{{i.turi}}</p>-->
+<!--<p>{{i.ip_manzili}}</p>-->
+<!--<p>{{i.hudud}}</p>-->
+<!--<p>{{i.is_active}}</p>-->
+<!--<br>-->
+<!--{% endfor %}-->
